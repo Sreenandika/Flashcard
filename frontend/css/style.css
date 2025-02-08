@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, textarea {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+button {
+    padding: 10px;
+    background: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.flashcard {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    background: #f9f9f9;
+}

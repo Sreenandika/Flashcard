@@ -30,5 +30,10 @@ router.delete("/:id", async (req, res) => {
     await pool.query("DELETE FROM flashcards WHERE id = $1", [id]);
     res.json({ message: "Flashcard deleted" });
 });
+// // Redirect if not logged in
+// if (!localStorage.getItem("token")) {
+//     window.location.href = "login.html";
+// }
+
 
 module.exports = router;

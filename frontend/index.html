@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Flashcard</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <h1>Submit a Flashcard</h1>
+    
+    <form id="flashcard-form">
+        <label for="title">Topic:</label>
+        <input type="text" id="title" required>
+        
+        <label for="explanation">Explanation:</label>
+        <textarea id="explanation" required></textarea>
+        
+        <button type="submit">Submit</button>
+    </form>
+
+    <button onclick="goToFlashcards()">View  Flashcards</button>
+
+    <script src="js/index.js"></script>
+</body>
+</html>
