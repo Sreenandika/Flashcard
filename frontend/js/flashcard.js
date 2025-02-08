@@ -48,7 +48,7 @@ async function deleteFlashcard(id) {
 
 // Go back to the submission page
 function goBack() {
-    window.location.href = "index.html";
+    window.location.href = "submit.html";
 }
 
 // Load flashcards on page load
