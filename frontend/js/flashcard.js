@@ -30,7 +30,7 @@ async function editFlashcard(id) {
     const newExplanation = prompt("Enter new explanation:");
     if (newTitle && newExplanation) {
         await fetch(`http://localhost:5000/flashcards/${id}`, {
-            method: "PUT",
+            method:"PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ title: newTitle, explanation: newExplanation })
         });
@@ -48,7 +48,7 @@ async function deleteFlashcard(id) {
 
 // Go back to the submission page
 function goBack() {
-    window.location.href = "submit.html";
+    window.location.href = "index.html";
 }
 
 // Load flashcards on page load

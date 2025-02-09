@@ -19,7 +19,3 @@ document.getElementById("flashcard-form").addEventListener("submit", async (e) =
 function goToFlashcards() {
     window.location.href = "flashcards.html";
 }
-// Handle Logout
-document.getElementById("logout-btn")?.addEventListener("click", () => {
-    fetch("/auth/logout").then(() => window.location.href = "/login");
-});

@@ -1,41 +1,34 @@
 const express = require("express");
-const router = express.Router();
 const pool = require("../db");
 
-// Signup Route
+const router = express.Router();
+
+// User Signup (NO bcrypt)
 router.post("/signup", async (req, res) => {
     const { username, password } = req.body;
 
-    try {
-        await pool.query("INSERT INTO users (username, password) VALUES ($1, $2)", [username, password]);
-        res.send("Signup successful!");
-    } catch (err) {
-        res.status(500).send("Error signing up");
-    }
+    // Check if user exists
+    const userCheck = await pool.query("SELECT * FROM users WHERE username = $1", [username]);
+    if (userCheck.rows.length > 0) return res.send("Username already taken");
+
+    // Store password as plain text (⚠ Not secure)
+    await pool.query("INSERT INTO users (username, password) VALUES ($1, $2)", [username, password]);
+
+    res.send("Signup successful! You can now login.");
 });
 
-// Login Route
+// User Login
 router.post("/login", async (req, res) => {
     const { username, password } = req.body;
 
-    try {
-        const user = await pool.query("SELECT * FROM users WHERE username = $1 AND password = $2", [username, password]);
+    // Find user
+    const user = await pool.query("SELECT * FROM users WHERE username = $1", [username]);
+    if (user.rows.length === 0) return res.send("Invalid username or password");
 
-        if (user.rows.length > 0) {
-            res.cookie("loggedIn", "true", { httpOnly: true }); // Set login cookie
-            res.send("Login successful!");
-        } else {
-            res.status(401).send("Invalid credentials");
-        }
-    } catch (err) {
-        res.status(500).send("Error logging in");
-    }
-});
+    // Compare plain text passwords
+    if (user.rows[0].password !== password) return res.send("Invalid username or password");
 
-// Logout Route
-router.get("/logout", (req, res) => {
-    res.clearCookie("loggedIn");
-    res.redirect("/login");
+    res.send("Login successful! Redirecting...");
 });
 
 module.exports = router;
