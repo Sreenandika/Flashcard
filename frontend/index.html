@@ -6,23 +6,164 @@
     <title>Submit Flashcard</title>
     <link rel="stylesheet" href="./css/style.css">
     <style>
-        
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html, body {
+        height: 100%;
+        width: 100%;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        background-image: url("https://i.pinimg.com/736x/bd/92/bc/bd92bcad6fd5c849d27d3cf294bf718f.jpg");
+        min-height: 100vh;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        color: #863030;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        margin-bottom: 2rem;
+        width: 100%;
+        animation: fadeIn 1s ease-out;
+    }
+
+    .form-container {
+        width: 100%;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    form {
+        background: rgba(12, 11, 11, 0.5);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        animation: fadeIn 1s ease-out;
+    }
+
+    label {
+        font-size: 1.2rem;
+        color: #f7f3f3;
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: inset 2px 2px 5px rgba(203, 0, 0, 0.1);
+    }
+
+    textarea {
+        height: 100px;
+        resize: none;
+    }
+
+    /* New button container styling */
+    .button-container {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    /* Updated button styling */
+    button {
+        background: #704021;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: 0.3s;
+        animation: fadeIn 1s ease-out;
+    }
+
+    /* Specific styling for form buttons */
+    .form-button {
+        flex: 1;
+    }
+
+    button:hover {
+        background: #6d1919;
+        transform: scale(1.05);
+    }
+
+    /* View Flashcards button */
+    .view-flashcards {
+        background: #704021;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .view-flashcards:hover {
+        background: #a45214;
+    }
+
+    @media screen and (min-width: 768px) {
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+        }
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
     </style>
 </head>
 <body>
     <h1>Submit a Flashcard</h1>
     
-    <form id="flashcard-form">
-        <label for="title">Topic:</label>
-        <input type="text" id="title" required>
-        
-        <label for="explanation">Explanation:</label>
-        <textarea id="explanation" required></textarea>
-        
-        <button type="submit">Submit</button>
-    </form>
-
-    <button onclick="goToFlashcards()">View  Flashcards</button>
+    <div class="form-container">
+        <form id="flashcard-form">
+            <label for="title">Topic:</label>
+            <input type="text" id="title" required>
+            
+            <label for="explanation">Explanation:</label>
+            <textarea id="explanation" required></textarea>
+            
+            <div class="button-container">
+                <button type="submit" class="form-button">Submit</button>
+                <button type="button" id="logout-btn" class="form-button">Logout</button>
+            </div>
+        </form>
+        <button onclick="goToFlashcards()" class="view-flashcards">View Flashcards</button>
+    </div>
 
     <script src="./js/index.js"></script>
 </body>
