@@ -1,2 +1,2 @@
 # Flashcard
-project repo
+project repository
